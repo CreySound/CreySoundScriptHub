@@ -1,55 +1,4 @@
--- Example made by twink marie
-local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local mouse = LocalPlayer:GetMouse()
-local Camera = workspace.CurrentCamera
-local Debris = game:GetService("Debris")
-local UserInputService = game:GetService("UserInputService")
-warn("Loading script...")
-    local A_2 = "All"
-    local A_1 = "Admin saids NO!"
-local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
 
-
-
-local X = Material.Load({
-    Title = "Ragdoll Jail Script",
-    Style = 3,
-    SizeX = 500,
-    SizeY = 350,
-    Theme = "Dark",
-    ColorOverrides = {
-    }
-})
-
-local Y = X.New({
-    Title = "Main"
-})
-
---[[
-local h = Y.Toggle({
-    Text = "",
-    Callback = function(Value)
-
-    end
-})
-]]
-
-local Test = Y.Button({
-    Text = "Jail All",
-    Callback = function()
-        game.ReplicatedStorage.Events.Release:FireServer()
-        for i,v in pairs(game.Players:GetPlayers()) do 
-            if v.Name~=game.Players.LocalPlayer.Name then 
-                game.ReplicatedStorage.Events.Jail:FireServer(v)
-            end
-        end
-        Event:FireServer(A_1, A_2)
-    end
-})
-
-local Test = Y.Button({a-- Example made by twink marie
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
@@ -61,6 +10,7 @@ warn("Loading script...")
     local A_2 = "All"
     local A_1 = ""
 local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
+
 
 
 
@@ -78,6 +28,10 @@ local V = X.New({
 })
 local Y = X.New({
     Title = "Ragdoll Engine/pushing simulator"
+})
+
+local A = X.New({
+    Title = "Infectious Smile"
 })
 
 --[[
@@ -161,7 +115,9 @@ Instance.Activated:connect(
 local h = Y.Toggle({
     Text = "Anti-Ragdoll",
     Callback = function(Value)
+    if game.PlaceId == 3339793570 or game.PlaceId == 2041312716 then
         game:GetService("Players").LocalPlayer.Character:FindFirstChild("Local Ragdoll").Disabled = true
+        end
     end
 })
 
@@ -187,10 +143,6 @@ its on client mode sadly
 loadstring(game:HttpGet("https://raw.githubusercontent.com/CreySound/Exoliner/main/Source.lua", true))()
     end
 })
-    Callback = function()
-        game.ReplicatedStorage.Events.Release:FireServer()
-    end
-})
 
 local Test = Y.Button({
     Text = "Jail-And-Unjail",
@@ -202,5 +154,39 @@ local Test = Y.Button({
         end
         game.ReplicatedStorage.Events.Release:FireServer()
         Event:FireServer(A_1, A_2)
+    end
+})
+
+local h = A.Toggle({
+    Text = "No Cooldown Bat",
+    Callback = function(Value)
+        
+    end
+})
+
+local h = A.Button({
+    Text = "No-Infect",
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Stats.Infected:Destroy()
+    end
+})
+
+local h = A.Button({
+    Text = "Delete Infect Part",
+    Callback = function(Value)
+        workspace.Map.Infectors.Infector:Destroy()
+    end
+})
+local h = A.Button({
+    Text = "Delete Map",
+    Callback = function(Value)
+        workspace.Map:Destroy()
+    end
+})
+
+local h = A.Button({
+    Text = "All Weapons",
+    Callback = function(Value)
+        
     end
 })
